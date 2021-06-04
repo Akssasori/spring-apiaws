@@ -8,6 +8,7 @@ public class SpringApiawsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringApiawsApplication.class, args);
+		//teste
 	}
 
 }
