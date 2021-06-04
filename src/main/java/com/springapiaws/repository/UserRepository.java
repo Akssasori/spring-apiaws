@@ -1,21 +1,23 @@
 package com.springapiaws.repository;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.springapiaws.domain.Request;
 import com.springapiaws.domain.User;
-import com.springapiaws.domain.enums.RequestState;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 	
-	public List<Request> findAllOwnerId(Long id);
+	@Query("SELECT u FROM user u WHERE email = ?1 AND password = ?2")
+	public Optional<User> login(String email, String password);
 	
-	@Query("UPDATE request SET state = ?2 WHERE id = ?1")
-	public Request updateStatus(Long id, RequestState state);
+	
+//	public List<Request> findAllOwnerId(Long id);
+//	
+//	@Query("UPDATE request SET state = ?2 WHERE id = ?1")
+//	public Request updateStatus(Long id, RequestState state);
 
 }

@@ -17,13 +17,11 @@ import javax.persistence.TemporalType;
 
 import com.springapiaws.domain.enums.RequestState;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Getter @Setter
 @Entity(name = "request_stage")
 public class RequestStage implements Serializable{
@@ -55,6 +53,23 @@ public class RequestStage implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "owner_id", nullable = false)
 	private User owner;
+	
+	public RequestStage() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public RequestStage(Long id, String description, Date realizationDate, RequestState state, Request request,
+			User owner) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.realizationDate = realizationDate;
+		this.state = state;
+		this.request = request;
+		this.owner = owner;
+	}
+	
+	
 	
 	
 

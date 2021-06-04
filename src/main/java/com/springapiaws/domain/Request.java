@@ -20,13 +20,10 @@ import javax.persistence.TemporalType;
 
 import com.springapiaws.domain.enums.RequestState;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Getter @Setter
 @Entity(name = "request")
 public class Request implements Serializable {
@@ -61,6 +58,22 @@ public class Request implements Serializable {
 	@OneToMany(mappedBy = "request")
 	private List<RequestStage> stages = new ArrayList<RequestStage>();
 	
-	//
+	public Request() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Request(Long id, String subject, String description, Date creationDate, RequestState state, User owner,
+			List<RequestStage> stages) {
+		super();
+		this.id = id;
+		this.subject = subject;
+		this.description = description;
+		this.creationDate = creationDate;
+		this.state = state;
+		this.owner = owner;
+		this.stages = stages;
+	}
+	
+	
 
 }
